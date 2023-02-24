@@ -1,4 +1,4 @@
-import debug_toolbar
+# import debug_toolbar
 from django.urls import path, include
 from django.contrib import admin
 from exam import views
@@ -11,7 +11,7 @@ urlpatterns = [
     path('student/', include('student.urls')),
 
     ###
-    path('__debug__/', include(debug_toolbar.urls)),
+    # path('__debug__/', include(debug_toolbar.urls)),
     ###
 
     path('', views.home_view, name=''),
