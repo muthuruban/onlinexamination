@@ -23,8 +23,8 @@
 </head>
 <br><br>
 <div class="container">
-  <div class="panel panel-primary rounded-0">
-    <div class="panel-heading rounded-0">
+  <div class="panel panel-primary rounded-0"style="border:#FFFFFF">
+    <div class="panel-heading rounded-0"style="background-color:#FF5F1F;border:#FF5F1F">
       <h6 class="panel-title">Available Courses</h6>
     </div>
     <table class="table table-hover table-bordered" id="dev-table">
@@ -43,11 +43,11 @@
          align="center">
              <select>
                  <option value="easy">Easy</option>
-                 <option value="meidum">Meidum</option>
+                 <option value="medium">Medium</option>
                  <option value="hard">Hard</option>
              </select>
          </td>
-        <td class="text-center"><a class="btn btn-primary btn-sm" style="border-radius:0px;" href="{% url 'take-exam' t.id  %}"><span class="glyphicon glyphicon-check"></span> Attend Exam</a></td>
+        <td class="text-center"><a class="btn btn-primary btn-sm" style="border-radius:0px;background-color:#FF5F1F" href="{% url 'take-exam' t.id  %}"><span class="glyphicon glyphicon-check"></span> Attend Exam</a></td>
       </tr>
       {% endfor %}
     </table>
@@ -55,4 +55,4 @@
 </div>
 
 <br><br><br><br><br><br>
-{% endblock content %}
+<!--{% endblock content %}-->

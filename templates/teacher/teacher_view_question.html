@@ -23,8 +23,8 @@
 </head>
 <br><br>
 <div class="container">
-  <div class="panel panel-primary rounded-0">
-    <div class="panel-heading rounded-0">
+  <div class="panel panel-primary rounded-0"style="border:#FFFFFF">
+    <div class="panel-heading rounded-0"style="background-color:#FF5F1F;border:#FF5F1F">
       <h6 class="panel-title">Available Questions</h6>
     </div>
     <table class="table table-hover table-bordered" id="dev-table">
@@ -45,7 +45,7 @@
         <td>Difficulty</td>
         <td>{{c.question_number}}</td>
         <td>{{c.total_marks}}</td>
-        <td class="text-center"><a class="btn btn-primary btn-sm" style="border-radius: 0%;" href="{% url 'see-question' c.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Question</a></td>
+        <td class="text-center"><a class="btn btn-primary btn-sm" style="border-radius: 0%;background-color:#FF5F1F" href="{% url 'see-question' c.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Question</a></td>
         
       </tr>
       {% endfor %}
@@ -54,4 +54,4 @@
 </div>
 
 <br><br><br><br><br><br>
-{% endblock content %}
+<!--{% endblock content %}-->
