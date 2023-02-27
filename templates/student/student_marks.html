@@ -30,21 +30,12 @@
         <tr>
 
           <th>Course</th>
-          <th>Difficulty</th>
           <th>Action</th>
         </tr>
       </thead>
       {% for t in courses %}
       <tr>
         <td> {{t.course_name}}</td>
-        <td class="select text-center"
-         align="center">
-             <select>
-                 <option value="easy">Easy</option>
-                 <option value="medium">Medium</option>
-                 <option value="hard">Hard</option>
-             </select>
-         </td>
         <td class='text-center'><a class="btn btn-primary btn-sm" style="border-radius:0px;background-color:#FF5F1F" href="{% url 'check-marks' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Marks</a></td>
       </tr>
       {% endfor %}

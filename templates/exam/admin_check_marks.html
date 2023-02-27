@@ -32,7 +32,6 @@
         <tr>
 
           <th>Course</th>
-          
           <th>Total Marks</th>
           <th>Number of Attempt</th>
           <th>Exam Date</th>
@@ -40,7 +39,6 @@
       </thead>
       {% for t in results %}
       <tr>
-
         <td> {{t.exam}}</td>
         <td> {{t.marks}}</td>
         <td>Attempt {{ forloop.counter }}</td>

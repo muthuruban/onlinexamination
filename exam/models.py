@@ -14,6 +14,7 @@ class Course(models.Model):
 
 class Question(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    difficulty = models.CharField(max_length=25,default="Easy")
     marks = models.PositiveIntegerField()
     question = models.CharField(max_length=600)
     option1 = models.CharField(max_length=200)

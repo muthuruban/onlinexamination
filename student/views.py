@@ -71,9 +71,11 @@ def take_exam_view(request,pk):
 def start_exam_view(request,pk):
     course=QMODEL.Course.objects.get(id=pk)
     questions=QMODEL.Question.objects.all().filter(course=course)
+    difficulty=request.GET.get('difficulty_level')
+    print(difficulty)
     if request.method=='POST':
         pass
-    response= render(request,'student/start_exam.html',{'course':course,'questions':questions})
+    response= render(request,'student/start_exam.html',{'course':course,'questions':questions,'difficulty':difficulty})
     response.set_cookie('course_id',course.id)
     return response
 

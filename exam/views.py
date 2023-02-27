@@ -235,6 +235,7 @@ def admin_add_question_view(request):
             # courseId = int()
             courseId = models.Course.objects.get(id=request.POST.get('courseID'))
             question = ""
+            difficulty = ""
             marks = int()
             option1 = ""
             option2 = ""
@@ -242,6 +243,8 @@ def admin_add_question_view(request):
             option4 = ""
             answer = ""
             flag = 0
+            if ('difficulty_level' in request.POST):
+                difficulty = request.POST['difficulty_level']
             if ('question' + str(index) in request.POST):
                 question = request.POST['question' + str(index)]
                 flag = 1
@@ -265,7 +268,8 @@ def admin_add_question_view(request):
                 flag = 1
 
             if flag == 1:
-                Question.objects.create(course=courseId, question=question, marks=marks, option1=option1,
+                Question.objects.create(course=courseId, difficulty=difficulty, question=question, marks=marks,
+                                        option1=option1,
                                         option2=option2, option3=option3, option4=option4, answer=answer)
 
         # questionForm = forms.QuestionForm(request.POST)
@@ -318,7 +322,6 @@ def admin_check_marks_view(request, pk):
     course = models.Course.objects.get(id=pk)
     student_id = request.COOKIES.get('student_id')
     student = SMODEL.Student.objects.get(id=student_id)
-
     results = models.Result.objects.all().filter(exam=course).filter(student=student)
     return render(request, 'exam/admin_check_marks.html', {'results': results})
 

@@ -32,7 +32,6 @@
         <tr>
 
           <th>Course</th>
-          <th>Difficulty</th>
           <th>Total Question</th>
           <th>Total Marks</th>
           <th>Action</th>
@@ -42,7 +41,6 @@
       <tr>
 
         <td> {{c.course_name}}</td>
-        <td>Difficulty</td>
         <td>{{c.question_number}}</td>
         <td>{{c.total_marks}}</td>
         <td class="text-center"><a class="btn btn-primary btn-sm" style="border-radius: 0%;background-color:#FF5F1F" href="{% url 'see-question' c.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Question</a></td>

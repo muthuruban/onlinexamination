@@ -15,6 +15,7 @@
         {% csrf_token %}
         <h2 style="text-align: center;">Course: {{course.course_name}}</h2>
         {% for q in questions%}
+
         <div class="d-flex w-100 align-items-center">
             <div class="col-auto flex-shrink-1 flex-grow-1">
                 <h3 class="">{{ forloop.counter }}. {{q.question}}</h3>
@@ -56,9 +57,8 @@
               {{q.option4}}
             </label>
         </div>
-
         {% endfor %}
-        <input class="btn btn-primary btn-lg" style="border-radius: 0%;background-color:#FF5F1F" type="submit" value="Submit Answers">
+        <input class="btn btn-success btn-lg" style="border-radius:10px;" type="submit" value="Submit Answers">
     </form>
 </div>
 

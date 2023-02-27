@@ -38,14 +38,17 @@
       </thead>
       {% for t in courses %}
       <tr>
-        <td> {{t.course_name}}</td>
+        <td > {{t.course_name}}</td>
          <td class="select text-center"
          align="center">
-             <select>
-                 <option value="easy">Easy</option>
-                 <option value="medium">Medium</option>
-                 <option value="hard">Hard</option>
-             </select>
+             <form method="POST" action="PageObject">
+             <select name="difficulty_level" class="form-control" style="height:30px;" required id="id_difficulty_level" >
+                 <option value="" selected>----------</option>
+                 <option value="Easy">Easy</option>
+                 <option value="Medium">Medium</option>
+                 <option value="Hard">Hard</option>
+             </select></form>
+             <br>
          </td>
         <td class="text-center"><a class="btn btn-primary btn-sm" style="border-radius:0px;background-color:#FF5F1F" href="{% url 'take-exam' t.id  %}"><span class="glyphicon glyphicon-check"></span> Attend Exam</a></td>
       </tr>

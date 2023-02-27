@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect,reverse
+
+from exam.models import Question
 from . import forms,models
 from django.db.models import Sum
 from django.contrib.auth.models import Group
@@ -91,18 +93,64 @@ def teacher_question_view(request):
 @login_required(login_url='teacherlogin')
 @user_passes_test(is_teacher)
 def teacher_add_question_view(request):
-    questionForm=QFORM.QuestionForm()
-    if request.method=='POST':
-        questionForm=QFORM.QuestionForm(request.POST)
-        if questionForm.is_valid():
-            question=questionForm.save(commit=False)
-            course=QMODEL.Course.objects.get(id=request.POST.get('courseID'))
-            question.course=course
-            question.save()       
+    # QuestionFormSet = inlineformset_factory(Course,Question,fields={'marks','question','option1','option2','option3','option4','answer'})
+    questionForm = QFORM.QuestionForm()
+
+    length = request.POST.get('totallength')
+    # length = 1
+    if request.method == 'POST':
+        i = 0
+        for index in range(i, int(length)):
+            # courseId = int()
+            courseId = QMODEL.Course.objects.get(id=request.POST.get('courseID'))
+            question = ""
+            difficulty = ""
+            marks = int()
+            option1 = ""
+            option2 = ""
+            option3 = ""
+            option4 = ""
+            answer = ""
+            flag = 0
+            if ('difficulty_level' in request.POST):
+                difficulty = request.POST['difficulty_level']
+            if ('question' + str(index) in request.POST):
+                question = request.POST['question' + str(index)]
+                flag = 1
+            if ('marks' + str(index) in request.POST):
+                marks = request.POST['marks' + str(index)]
+                flag = 1
+            if ('option1_' + str(index) in request.POST):
+                option1 = request.POST['option1_' + str(index)]
+                flag = 1
+            if ('option2_' + str(index) in request.POST):
+                option2 = request.POST['option2_' + str(index)]
+                flag = 1
+            if ('option3_' + str(index) in request.POST):
+                option3 = request.POST['option3_' + str(index)]
+                flag = 1
+            if ('option4_' + str(index) in request.POST):
+                option4 = request.POST['option4_' + str(index)]
+                flag = 1
+            if ('answer' + str(index) in request.POST):
+                answer = request.POST['answer' + str(index)]
+                flag = 1
+
+            if flag == 1:
+                Question.objects.create(course=courseId, difficulty=difficulty, question=question, marks=marks,
+                                        option1=option1,
+                                        option2=option2, option3=option3, option4=option4, answer=answer)
+
+        # questionForm = forms.QuestionForm(request.POST)
+        # if questionForm.is_valid():
+        #     if questionForm.cleaned_data:
+        #         # question = questionForm.save(commit=False)
+        #         questionForm.save()
         else:
             print("form is invalid")
         return HttpResponseRedirect('/teacher/teacher-view-question')
-    return render(request,'teacher/teacher_add_question.html',{'questionForm':questionForm})
+    return render(request, 'teacher/teacher_add_question.html',
+                  {'questionForm': questionForm})
 
 @login_required(login_url='teacherlogin')
 @user_passes_test(is_teacher)

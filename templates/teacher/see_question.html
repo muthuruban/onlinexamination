@@ -39,7 +39,7 @@
             {% for c in questions %}
             <tr>
                 <td> {{c.question}}</td>
-                <td>Difficulty level</td>
+                <td>{{c.difficulty}}</td>
                 <td>{{c.marks}}</td>
                 <td class=""><a class="btn btn-danger btn-xs" style="border-radius: 0%;"
                                            href="{% url 'remove-question' c.id  %}"><span
@@ -51,4 +51,4 @@
 </div>
 
 <br><br><br><br><br><br>
-{% endblock content %}
+<!--{% endblock content %}-->

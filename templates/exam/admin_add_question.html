@@ -13,6 +13,15 @@
         <label for="question">Course</label>
       {% render_field questionForm.courseID|attr:'required:true' class="form-control form-control-sm rounded-0"  %}
         <br>
+        <div class="difficulty-section">
+            <label>Difficulty : </label>
+            <select name="difficulty_level" class="form-control form-control-sm rounded-0" required id="id_difficulty_level">
+  <option value="" selected>---------</option>
+  <option value="Easy">Easy</option>
+  <option value="Medium">Medium</option>
+  <option value="Hard">Hard</option>
+</select>
+        </div>
     </div>
     <div id="question-form">
         </div>
@@ -20,8 +29,8 @@
 
 <input type="hidden" name="totallength" id="totallength"/>
 
-        <button type="button" id="add_question_btn" class="btn btn-primary rounded-0" style="border-radius:2px;background-color:#FF5F1F;border:#FF5F1F"  >Add Question</button>
-    <button type="submit" id="submit_btn" class="btn btn-success" style="border-radius:0px;margin:10px">Submit Question</button>
+        <button type="button" id="add_question_btn" class="btn btn-primary " style="border-radius:10px;background-color:#FF5F1F;border:#FF5F1F"  >Add Question</button>
+    <button type="submit" id="submit_btn" class="btn btn-success" style="border-radius:10px;margin:10px">Submit Question</button>
 </div></form><br><br><br>
 {% include 'exam/add_question_js.html' %}
-{% endblock content %}
+<!--{% endblock content %}-->

@@ -32,7 +32,6 @@
         <tr>
 
           <th>Exam Name</th>
-          <th>Difficulty</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -40,7 +39,6 @@
       <tr>
 
         <td> {{t.course_name}}</td>
-        <td>Difficulty</td>
         <td><a class="btn btn-success btn-sm" style="border-radius: 0%;" href="{% url 'check-marks' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Marks</a></td>
       </tr>
       {% endfor %}
