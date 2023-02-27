@@ -5,7 +5,7 @@ from student.models import Student
 
 class Course(models.Model):
     course_name = models.CharField(max_length=50)
-    question_number = models.PositiveIntegerField()
+    question_number = models.PositiveIntegerField(default=1)
     total_marks = models.PositiveIntegerField()
 
     def __str__(self):
@@ -22,7 +22,6 @@ class Question(models.Model):
     option4 = models.CharField(max_length=200)
     cat = (('Option1', 'Option1'), ('Option2', 'Option2'), ('Option3', 'Option3'), ('Option4', 'Option4'))
     answer = models.CharField(max_length=200, choices=cat)
-
 
 class Result(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)

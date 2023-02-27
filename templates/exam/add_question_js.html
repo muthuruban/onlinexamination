@@ -1,0 +1,105 @@
+{% load widget_tweaks %}
+<script type="text/javascript">
+$('#submit_btn').hide();
+$(document).ready(function(){
+var x=0;
+var no = 1;
+$("#add_question_btn").click(function(e){
+    e.preventDefault();
+    console.log('Button clicked');
+    appendRow(x);
+    x++;
+    no++;
+    $('#totallength').val(x);
+    $('#submit_btn').show();
+})
+
+
+$("#question-form").on('click', '.deleteBtn',function(e){
+    e.preventDefault();
+    var id = e.currentTarget.id;
+    $('div[id='+id+']').remove();
+    x--;
+    no--;
+    $('#totallength').val(x);
+    if(x === 0){
+        $('#submit_btn').hide();
+    }
+});
+
+function alertDemo(){
+    alert("Please enter");
+}
+
+
+function appendRow(){
+    $("#question-form").append(
+    '<br>' +
+    '<div id="'+x+'" class="question-group">' +
+        '<div class="question-box" id="'+x+'">' +
+      '<label id="'+x+'" for="question">'+no+' Question</label>' +
+      '<textarea name="question'+x+'" cols="50" rows="3" maxlength="600" placeholder="Example: Which one of the following is not a phase of Prototyping Model?" class="form-control form-control-sm rounded-0" required id="'+x+'">' +
+'</textarea>'+
+        '</div><br>' +
+        '<div class="marks-box" id="'+x+'">' +
+      '<label id="'+x+'" for="question_number">Marks</label>' +
+      '<input name="marks'+x+'" type="number" name="marks" min="0" placeholder="Example: 5" class="form-control form-control-sm rounded-0" required id="'+x+'">' +
+        '</div><br>' +
+        '<div class="option1-box" id="'+x+'">' +
+      '<label id="'+x+'" for="option1">Option 1</label>' +
+      '<input type="text" name="option1_'+x+'" maxlength="200" placeholder="Example: Quick Design" class="form-control form-control-sm rounded-0" required id="'+x+'">' +
+        '</div><br>' +
+        '<div class="option2-box" id="'+x+'">' +
+      '<label id="'+x+'" for="option2">Option 2</label>' +
+      '<input type="text" name="option2_'+x+'" maxlength="200" placeholder="Example: Coding" class="form-control form-control-sm rounded-0" required id="'+x+'">' +
+        '</div><br>' +
+            '<div class="option3-box" id="'+x+'">' +
+      '<label id="'+x+'" for="option3">Option 3</label>' +
+      '<input type="text" name="option3_'+x+'" maxlength="200" placeholder="Example: Prototype Refinement" class="form-control form-control-sm rounded-0" required id="'+x+'">' +
+            '</div><br>' +
+                '<div class="option4-box" id="'+x+'">' +
+      '<label id="'+x+'" for="option4">Option 4</label>' +
+      '<input type="text" name="option4_'+x+'" maxlength="200" placeholder="Example: Engineer Product" class="form-control form-control-sm rounded-0" required id="'+x+'">' +
+                '</div><br>' +
+                    '<div class="answer-box" id="'+x+'">' +
+      '<label id="'+x+'" for="answer">Correct Answer</label>' +
+      '<select name="answer'+x+'" class="form-control form-control-sm rounded-0" required id="'+x+'">'+
+  '<option value="" selected>---------</option>'+
+  '<option value="Option1">Option1</option>'+
+  '<option value="Option2">Option2</option>'+
+  '<option value="Option3">Option3</option>'+
+  '<option value="Option4">Option4</option>'+
+'</select>' +
+'<br>' +
+'<div id="'+x+'" class="form-group">' +
+    '<button type="button" id="'+x+'" class="btn btn-danger deleteBtn">Delete Question</button>' +
+    '</div>' +
+                  '</div></div>'+
+  '</div>');
+}
+
+$.fn.serializeObject = function(asString) {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a,function(){
+        if($('#' + this.name).hasClass('data')){
+            this.value = new Date(this.value).setHours(12);
+        }
+
+        if(o[this.name] != undefined){
+            if(!o[this.name].push){
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    if (asString){
+        return JSON.stringify(o);
+    }
+    return o;
+}
+
+});
+</script>
